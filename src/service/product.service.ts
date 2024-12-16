@@ -1,5 +1,4 @@
 import { API_URL } from '@/app/constants';
-import { IProduct } from '@/app/types';
 
 export async function getProducts() {
   try {
