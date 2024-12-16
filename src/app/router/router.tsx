@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     errorElement: '404',
   },
   {
-    path: '/products',
+    path: '/products/:id',
     element: <ProductPage />,
   },
   {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import clsx from 'clsx';
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import styles from "./ProductsList.module.scss";
 import { fetchProducts, deleteProduct } from '@/app/store/slices/productSlice';
@@ -79,13 +80,16 @@ export const ProductsList = () => {
       <ul className={styles.product__list}>
         {filteredProducts.map((product) => (
           <li key={product.id} className={styles.product__item}>
-            <div className={clsx(styles['product__item-title'])}>{product.title}</div>
-            <img src={product.image} alt="Photo" className={styles['product__item-image']} />
-            <div className={clsx(styles['product__item-description'])}>
-              {product.description}
-            </div>
-            <div>Category: {product.category}</div>
-            <div>Price: {product.price}</div>
+            <Link to={`/products/${product.id}`} className={styles.product__link}>
+              <div className={clsx(styles['product__item-title'])}>{product.title}</div>
+              <img src={product.image} alt="Photo" className={styles['product__item-image']} />
+              <div className={clsx(styles['product__item-description'])}>
+                {product.description}
+              </div>
+              <div>Category: {product.category}</div>
+              <div>Price: {product.price}</div>
+            </Link>
+
             <div className={clsx(styles['product__item-btns'])}>
               <button
                 className={clsx(styles['product__item-btn'], styles['product__item-btn_like'])}
