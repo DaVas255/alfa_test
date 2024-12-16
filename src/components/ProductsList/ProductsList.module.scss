@@ -15,6 +15,12 @@
     text-align: center;
   }
 
+  &__filter {
+    margin: 0 1rem 2rem 0;
+
+    background-color: transparent;
+  }
+
   &__list {
     max-height: 85vh;
     display: flex;
