@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import clsx from 'clsx';
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./ProductsList.module.scss";
-import { IProduct } from "@/app/types";
-import { fetchProducts } from '@/app/store/slices/productSlice';
+import { fetchProducts, deleteProduct } from '@/app/store/slices/productSlice';
 import { AppDispatch, RootState } from '@/app/store/store';
 
 export const ProductsList = () => {
@@ -13,7 +12,11 @@ export const ProductsList = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch])
+  }, [dispatch]);
+
+  const handleDelete = (productId: number) => {
+    dispatch(deleteProduct(productId));
+  };
 
   if (loading) return <div>Загрузка...</div>;
   if (error) return <div>Ошибка: {error}</div>;
@@ -32,6 +35,10 @@ export const ProductsList = () => {
             </div>
             <div>Category: {product.category}</div>
             <div>Price: {product.price}</div>
+            <div className={clsx(styles['product__item-btns'])}>
+              <button className={clsx(styles['product__item-btn'])}>Like</button>
+              <button className={clsx(styles['product__item-btn'], styles['product__item-btn_delete'])} onClick={() => handleDelete(product.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
