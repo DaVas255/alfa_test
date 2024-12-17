@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { AppDispatch } from '@/app/store/store';
 import { addProduct } from '@/app/store/slices/productSlice';

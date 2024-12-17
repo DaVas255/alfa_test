@@ -7,10 +7,10 @@ import styles from "./ProductsList.module.scss";
 import { fetchProducts, deleteProduct } from '@/app/store/slices/productSlice';
 import { AppDispatch, RootState } from '@/app/store/store';
 
-import Like from '@/app/assets/icons/like.svg?react';
-import LikeEmpty from '@/app/assets/icons/like-empty.svg?react';
-import Star from '@/app/assets/icons/star.svg?react';
-import StarEmpty from '@/app/assets/icons/star-empty.svg?react';
+import { Like } from '@/app/assets/icons/Like.tsx';
+import { LikeEmpty } from '@/app/assets/icons/LikeEmpty.tsx';
+import { Star } from '@/app/assets/icons/Star.tsx';
+import { StarEmpty } from '@/app/assets/icons/StarEmpty.tsx';
 
 export const ProductsList = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -62,7 +62,6 @@ export const ProductsList = () => {
   return (
     <div className={styles.product}>
       <h1 className={styles.product__title}>Products</h1>
-
       <div className={styles.product__filters}>
         <button
           className={clsx(styles.product__filter, { [styles.active]: filter === 'all' })}
