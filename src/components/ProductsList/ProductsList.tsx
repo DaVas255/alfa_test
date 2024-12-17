@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import clsx from 'clsx';
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import styles from "./ProductsList.module.scss";
 import { fetchProducts, deleteProduct } from '@/app/store/slices/productSlice';
 import { AppDispatch, RootState } from '@/app/store/store';
+
 import Like from '@/app/assets/icons/like.svg?react';
 import LikeEmpty from '@/app/assets/icons/like-empty.svg?react';
 import Star from '@/app/assets/icons/star.svg?react';
@@ -75,6 +76,12 @@ export const ProductsList = () => {
         >
           Избранное
         </button>
+        <NavLink
+          to="/create-product"
+          className={clsx(styles.product__filter, styles.product__filter_create)}
+        >
+          Создать карточку
+        </NavLink>
       </div>
 
       <ul className={styles.product__list}>
@@ -82,7 +89,7 @@ export const ProductsList = () => {
           <li key={product.id} className={styles.product__item}>
             <Link to={`/products/${product.id}`} className={styles.product__link}>
               <div className={clsx(styles['product__item-title'])}>{product.title}</div>
-              <img src={product.image} alt="Photo" className={styles['product__item-image']} />
+              <img src={product.image} alt="Photo" className={styles['product__item-image']} loading="lazy" />
               <div className={clsx(styles['product__item-description'])}>
                 {product.description}
               </div>

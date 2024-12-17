@@ -1,0 +1,58 @@
+.createProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    margin-bottom: 2rem;
+
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 2rem;
+
+    border-radius: 20px;
+    background-color: rgb(38, 84, 84);
+  }
+
+  &__formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & label {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  }
+
+  &__input {
+    padding: 1rem;
+
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+  }
+
+  &__submit {
+    padding: 1rem;
+
+    border-radius: 5px;
+    background-color: #070db994;
+  }
+}
+
+.error {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: red;
+}

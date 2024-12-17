@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProduct } from '@/app/types';
 import { getProducts } from '@/service/product.service';
 
@@ -26,7 +26,10 @@ const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    deleteProduct: (state, action) => {
+    addProduct(state, action: PayloadAction<IProduct>) {
+      state.products.push(action.payload);
+    },
+    deleteProduct(state, action: PayloadAction<number>) {
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       );
@@ -49,5 +52,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { deleteProduct } = productSlice.actions;
+export const { addProduct, deleteProduct } = productSlice.actions;
+
 export default productSlice.reducer;
